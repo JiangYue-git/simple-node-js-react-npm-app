@@ -17,9 +17,8 @@ pipeline {
             steps {
                 sh "node -v"
                 sh "npm config set registry http://registry.npmmirror.com"
-                sh "npm install -g pnpm"
-                sh "pnpm config set registry https://registry.npmmirror.com"    
-                sh "pnpm install"
+                sh "npm install -g pnpm"   
+                sh "pnpm install --registry https://registry.npmmirror.com"
             }
         }
     }
