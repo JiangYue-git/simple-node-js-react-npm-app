@@ -15,11 +15,8 @@ pipeline {
         }
          stage('build') { 
             steps {
-                sh "node -v"
-                sh "npm config set registry http://registry.npmmirror.com"
-                sh "npm install -g pnpm --registry=https://registry.npmmirror.com"
-                sh "pnpm config set registry https://registry.npmmirror.com"    
-                sh "pnpm install"
+                sh "node -v"   
+                sh "npm install --registry=https://registry.npmmirror.com"
             }
         }
     }
