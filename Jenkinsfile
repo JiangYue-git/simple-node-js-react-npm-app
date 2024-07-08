@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+     agent {
+        docker { image 'node:7-alpine' }
+    }
      tools{
         maven 'maven'
         jdk 'jdk'
@@ -11,6 +13,7 @@ pipeline {
                 echo '拉取成功'
                 sh "mvn --version"
                 sh "java --version"
+                sh "node -v"
             }
         }
     }
