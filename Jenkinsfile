@@ -1,6 +1,6 @@
 pipeline {
      agent {
-        docker { image 'node:7-alpine' }
+        docker { image 'node:6-alpine' }
     }
      tools{
         maven 'maven'
