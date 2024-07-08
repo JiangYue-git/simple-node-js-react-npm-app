@@ -7,12 +7,19 @@ pipeline {
         jdk 'jdk'
     }
     stages {
-         stage('Git pull') { 
+         stage('git pull') { 
             steps {
                 git credentialsId: 'c3436b70-91c2-41fb-ab87-9ec084ed3484', url: 'https://github.com/JiangYue-git/simple-node-js-react-npm-app.git'
-                echo '拉取成功'
+                echo '拉取成功'         
+            }
+        }
+         stage('build') { 
+            steps {
                 sh "node -v"
-                sh "npm install"
+                sh "npm config set registry http://registry.npmmirror.com"
+                sh "npm install -g pnpm --registry=https://registry.npmmirror.com"
+                sh "pnpm config set registry https://registry.npmmirror.com"    
+                sh "pnpm install"
             }
         }
     }
